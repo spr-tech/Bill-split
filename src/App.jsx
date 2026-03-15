@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
 import { nanoid } from "nanoid";
-import FriendList from "./FriendList";
+import FriendList from "./components/FriendList";
 import AddFriend from "./components/AddFriend";
 import Button from "./components/Button";
-import AddSplitBill from "./AddSplitBill";
+import AddSplitBill from "./components/AddSplitBill";
 
-const initialFriends = [
+{
+  /*const initialFriends = [
   {
     id: nanoid(),
     name: "Clark",
@@ -25,13 +26,22 @@ const initialFriends = [
     image: "https://i.pravatar.cc/48?u=499476",
     balance: 0,
   },
-];
+;*/
+}
+
 const App = () => {
-  const [items, setItems] = useState(initialFriends);
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("friendList")),
+  );
   const [newFriend, setNewFriend] = useState("");
   const [image, setImage] = useState(null);
   const [appear, setAppear] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState(null);
+
+  const handleSetAndSave = (saved) => {
+    localStorage.setItem("friendList", JSON.stringify(saved));
+    setItems(saved);
+  };
 
   const handleNewFriend = (img, nam) => {
     const nf = {
@@ -41,7 +51,8 @@ const App = () => {
       balance: 0,
     };
 
-    setItems((prev) => [...prev, nf]);
+    const existingFriends = [...items, nf];
+    handleSetAndSave(existingFriends);
   };
 
   const handleSubmit = (e) => {
@@ -65,12 +76,13 @@ const App = () => {
         ? { ...item, balance: item.balance + value }
         : item,
     );
-    setItems(billSplit);
+    handleSetAndSave(billSplit);
     setSelectedFriend(null);
   };
 
   const handleRemoveFriend = (id) => {
-    setItems((prev) => prev.filter((prev) => prev.id !== id));
+    const deletedProfile = items.filter((fri) => fri.id !== id);
+    handleSetAndSave(deletedProfile);
   };
 
   return (

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Friend from "./components/Friend";
 
 const AddSplitBill = ({ selectedFriend, handleSplitBill }) => {
   const [bill, setBill] = useState("");

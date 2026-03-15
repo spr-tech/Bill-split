@@ -1,4 +1,4 @@
-import Friend from "./components/Friend";
+import Friend from "./Friend";
 
 const FriendList = ({
   friends,
