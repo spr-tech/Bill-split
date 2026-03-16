@@ -15,6 +15,7 @@ const AddFriend = ({
         type="text"
         value={newFriend}
         onChange={(e) => setNewFriend(e.target.value)}
+        placeholder="Type a friend name"
       />
 
       <label>🧑 Image url</label>
