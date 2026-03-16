@@ -34,7 +34,7 @@ const App = () => {
     JSON.parse(localStorage.getItem("friendList")) || [],
   );
   const [newFriend, setNewFriend] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("https://i.pravatar.cc/48?u=default");
   const [appear, setAppear] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState(null);
 
