@@ -2,7 +2,7 @@ import Friend from "./Friend";
 
 const FriendList = ({
   friends,
-  handleToggle,
+  handleShowFriend,
   selectedFriend,
   handleRemoveFriend,
 }) => {
@@ -13,7 +13,7 @@ const FriendList = ({
           <Friend
             friend={friend}
             key={friend.id}
-            handleToggle={handleToggle}
+            handleShowFriend={handleShowFriend}
             selectedFriend={selectedFriend}
             handleRemoveFriend={handleRemoveFriend}
           />

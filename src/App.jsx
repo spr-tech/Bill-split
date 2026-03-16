@@ -31,10 +31,10 @@ import AddSplitBill from "./components/AddSplitBill";
 
 const App = () => {
   const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("friendList")),
+    JSON.parse(localStorage.getItem("friendList")) || [],
   );
   const [newFriend, setNewFriend] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [appear, setAppear] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState(null);
 
@@ -90,7 +90,7 @@ const App = () => {
       <div className="sidebar">
         <FriendList
           friends={items}
-          handleToggle={handleShowFriend}
+          handleShowFriend={handleShowFriend}
           selectedFriend={selectedFriend}
           handleRemoveFriend={handleRemoveFriend}
         />

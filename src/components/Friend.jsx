@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Friend = ({
   friend,
-  handleToggle,
+  handleShowFriend,
   selectedFriend,
   handleRemoveFriend,
 }) => {
@@ -25,7 +25,7 @@ const Friend = ({
         )}
         {friend.balance === 0 && <p>You and {friend.name} are even</p>}
         <Button
-          handleToggle={() => handleToggle(friend)}
+          handleToggle={() => handleShowFriend(friend)}
           className={choosen ? "selected" : ""}
         >
           {choosen ? "Close" : "Select"}
